@@ -3,7 +3,9 @@ const fs = require('fs');
 const Enmap = require('enmap');
 
 const client = new Discord.Client();
-const settings = require(./settings.json);
+const settings = require('./settings.json');
+
+
 //the following code was taken from https://anidiots.guide/first-bot/a-basic-command-handler
 // This loop reads the /events/ folder and attaches each event file to the appropriate event.
 fs.readdir("./events/", (err, files) => {
@@ -38,9 +40,11 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 
+/* Not sure if i still need this!
 client.on("ready", () => {
   console.log("Skittbot Power On!");
 });
+*/
 
 
 /* old handler
