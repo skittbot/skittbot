@@ -40,7 +40,8 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 
-/* Not sure if i still need this!
+/*
+Not sure if i still need this!
 client.on("ready", () => {
   console.log("Skittbot Power On!");
 });
