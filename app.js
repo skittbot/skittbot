@@ -1,8 +1,9 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
+const fs = require('fs');
+const Enmap = require('enmap');
+
 const client = new Discord.Client();
 const settings = require(./settings.json);
-const fs = require('fs');
-
 //the following code was taken from https://anidiots.guide/first-bot/a-basic-command-handler
 // This loop reads the /events/ folder and attaches each event file to the appropriate event.
 fs.readdir("./events/", (err, files) => {
@@ -20,11 +21,29 @@ fs.readdir("./events/", (err, files) => {
   });
 });
 
+client.commands = new Enmap();
+​
+fs.readdir("./commands/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+    if (!file.endsWith(".js")) return;
+    // Load the command file itself
+    let props = require(`./commands/${file}`);
+    // Get just the command name from the file name
+    let commandName = file.split(".")[0];
+    console.log(`Attempting to load command ${commandName}`);
+    // Here we simply store the whole thing in the command Enmap. We're not running it right now.
+    client.commands.set(commandName, props);
+  });
+});
+
 
 client.on("ready", () => {
   console.log("Skittbot Power On!");
 });
 
+
+/* old handler
 client.on("message", (message) => {
 
   //if there's no prefix then this bot won't read the command.
@@ -33,11 +52,12 @@ client.on("message", (message) => {
   const command = args.shift().toLowerCase();
   //ping command, delete later
   if (message.content.startsWith(settings.prefix + "ping")) {
-    if(message.author.id !== config.ownerID) return;
+    if(message.author.id !== settings.ownerID) return;
     message.channel.send("pong!");
   }
 
   //end of the client messages
 });
+*/
 
 client.login(settings.token);
