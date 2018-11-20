@@ -47,3 +47,5 @@ module.exports = (client, message) => {
   // Run the command
   cmd.run(client, message, args);
 };
+
+//ugh ok looks like i need to learn about asynchronous functions.
