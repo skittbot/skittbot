@@ -19,10 +19,11 @@ exports.run = (client, message, args) => {
           console.log(message.author.id+": "+client.fcs.get(message.author.id,"switch"));
           break;
         case newConsole === '3DS':
-          if (newFC.length !== 12) return message.reply("Your friend code for the 3DS should be 12 digits.");
+          if (newFC.length !== 12) return message.reply("Your friend code for the Nintendo 3DS should be 12 digits.");
           finalFC = `${newFC.slice(0,4)}-${newFC.slice(4,8)}-${newFC.slice(8,12)}`;
-          client.fcs.ensure(message.author.id, {
-              3DS: finalFC
+          client.fcs.ensure(message.author.id, {});
+          client.fcs.set(message.author.id,finalFC,"3ds");
+          console.log(message.author.id+": "+client.fcs.get(message.author.id,"3ds"));
           });
           break;
         default:
