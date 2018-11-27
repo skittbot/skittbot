@@ -47,7 +47,7 @@ exports.run = (client, message, args) => {
 
     default:
     //nothing matches, return the "my friend code is x" stuff
-    return message.reply("My friend code is x");
+    return message.reply("My friend code is x and this is the end");
     break;
   };
 
