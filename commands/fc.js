@@ -24,16 +24,11 @@ exports.run = (client, message, args) => {
           client.fcs.ensure(message.author.id, {});
           client.fcs.set(message.author.id,finalFC,"3ds");
           console.log(message.author.id+": "+client.fcs.get(message.author.id,"3ds"));
-          });
           break;
         default:
           return message.reply("You did not input a valid friend code. The syntax for this command is: _!fc add **[console]** **[friend code]**");
           break;
-
-
-        break;
-      }
-
+        };
     break;
 
     case args[1] === 'del':
