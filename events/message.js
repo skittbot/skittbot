@@ -13,7 +13,7 @@ module.exports = (client, message) => {
   lastMess = client.user.lastMessage;
 
 
-  try {
+  /* try {
     var formerMessages = message.channel.fetchMessages({limit: 5}).then(egg => {return egg;});;
     console.log(formerMessages);
     formerMess = formerMessages.array();
@@ -32,7 +32,7 @@ module.exports = (client, message) => {
   }
   catch(err){
     console.log('something went wrong with flood protection: ' + err)
-  }
+  } */
 
   // Our standard argument/command name definition.
   const args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
