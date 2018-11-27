@@ -3,7 +3,6 @@ exports.run = (client, message, args) => {
   if(!args || args.size < 1) return message.reply("My friend code is x");
   console.log(args);
   switch(args[1]) {
-
     case args[1] === 'add':
       // adding a friend code to your account. syntax should be ""
       if (args.size !== 3) return message.reply("The syntax for this command is: _!fc add **[console]** **[friend code]**");
@@ -50,7 +49,7 @@ exports.run = (client, message, args) => {
     //nothing matches, return the "my friend code is x" stuff
     return message.reply("My friend code is x");
     break;
-  }
+  };
 
 
   };
