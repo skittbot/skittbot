@@ -1,7 +1,13 @@
 exports.run = (client, message, args) => {
 
   console.log(args.length);
-  if(!args || args.length < 1) return message.reply("My friend code for the switch is "+ client.fcs.get(message.author.id,"switch"));
+  if(!args || args.length < 1) {
+    client.fcs.ensure(message.author.id, {});
+    let finalDefDisp = dispFCS(message.author.id);
+    if (!finalDefDisp) return message.reply("no friend code was found.");
+    return message.reply(message.member.displayName + '\'s Friend Codes:\n' + finalDefDisp);
+    //return message.reply("My friend code for the switch is "+ client.fcs.get(message.author.id,"switch"));
+  }
   console.log(args + args[0]);
   switch(args[0]) {
 
@@ -87,9 +93,9 @@ exports.run = (client, message, args) => {
     let anyTarget = message.mentions.users.first();
     if (!anyTarget) anyTarget = message.author;
     client.fcs.ensure(anyTarget.id, {});
-    let finalDisp = dispFCS(message.author.id);
+    let finalDisp = dispFCS(anyTarget.id);
     if (!finalDisp) return message.reply("no friend code was found.");
-    return message.reply(message.member.displayName + '\'s Friend Codes:\n' + finalDisp);
+    return message.reply(anyTarget.username + '\'s Friend Codes:\n' + finalDisp);
     //return message.reply("the friend code for the requested user is: " +client.fcs.get(anyTarget.id,"switch"));
     break;
   };
