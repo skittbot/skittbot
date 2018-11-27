@@ -1,19 +1,21 @@
 module.exports = (client, message) => {
 
-  var currMessTime;
+  /*var currMessTime;
   var lastMess;
-  var formerMess;
+  var formerMess;*/
   // Ignore all bots
   if (message.author.bot) return;
+  if (!message.author) return;
 
   // Ignore messages not starting with the prefix (in config.json)
   if (message.content.indexOf(client.config.prefix) !== 0) return;
 
 
-  lastMess = client.user.lastMessage;
+  //lastMess = client.user.lastMessage;
 
 
-  /* try {
+  /* flood protection sucks but if you wanna enable this again i guess this is where you'd put it???
+  try {
     var formerMessages = message.channel.fetchMessages({limit: 5}).then(egg => {return egg;});;
     console.log(formerMessages);
     formerMess = formerMessages.array();

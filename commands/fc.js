@@ -87,9 +87,20 @@ exports.run = (client, message, args) => {
     let anyTarget = message.mentions.users.first();
     if (!anyTarget) anyTarget = message.author;
     client.fcs.ensure(anyTarget.id, {});
-    return message.reply("the friend code for the requested user is: " +client.fcs.get(anyTarget.id,"switch"));
+    let finalDisp = dispFCS(message.author.id);
+    if (!finalDisp) return message.reply("no friend code was found.");
+    return message.reply(message.member.displayName + '\'s Friend Codes:\n' + finalDisp);
+    //return message.reply("the friend code for the requested user is: " +client.fcs.get(anyTarget.id,"switch"));
     break;
   };
+};
 
-
-  };
+function dispFCS(authID){
+  let targetObj = client.fcs.get(authID);
+  let finalString = '';
+  for(var key in targetObj){
+    if(targetObj.key) finalString = finalString + key.toUpperCase() + ': ' + targetObj.key + '\n';
+  }
+  if (finalString === '') return false;
+  return finalString;
+}
