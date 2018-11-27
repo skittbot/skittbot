@@ -2,7 +2,7 @@ exports.run = (client, message, args) => {
 
   console.log(args.length);
   if(!args || args.size < 1) return message.reply("My friend code is x");
-  console.log(args);
+  console.log(args + args[1]);
   switch(args[1]) {
     case args[1] === 'add':
       // adding a friend code to your account. syntax should be ""
