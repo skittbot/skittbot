@@ -6,7 +6,7 @@ exports.run = (client, message, args) => {
   switch(args[0]) {
     case 'add':
       // adding a friend code to your account. syntax should be ""
-      if (args.size !== 3) return message.reply("The syntax for this command is: _!fc add **[console]** **[friend code]**");
+      if (args.size !== 3) return message.reply("The syntax for this command is: _!fc add [console] [friend code]_");
       let newConsole = args[1].toUpperCase();
       let newFC = args[2].replace(/\D/g,"");
       let finalFC;
