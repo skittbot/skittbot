@@ -31,24 +31,24 @@ exports.run = (client, message, args) => {
           if (newFC.length !== 12) return message.reply("your friend code for the Nintendo Switch should be 12 digits.");
           finalFC = `SW-${newFC.slice(0,4)}-${newFC.slice(4,8)}-${newFC.slice(8,12)}`;
           client.fcs.ensure(message.author.id, {});
-          client.fcs.set(message.author.id,finalFC,"switch");
-          console.log(message.author.id+": "+client.fcs.get(message.author.id,"switch"));
+          client.fcs.set(message.author.id,finalFC,"SWITCH");
+          console.log(message.author.id+": "+client.fcs.get(message.author.id,"SWITCH"));
           message.reply("your switch friend code has been added!");
           break;
         case '3DS':
           if (newFC.length !== 12) return message.reply("your friend code for the Nintendo 3DS should be 12 digits.");
           finalFC = `${newFC.slice(0,4)}-${newFC.slice(4,8)}-${newFC.slice(8,12)}`;
           client.fcs.ensure(message.author.id, {});
-          client.fcs.set(message.author.id,finalFC,"3ds");
-          console.log(message.author.id+": "+client.fcs.get(message.author.id,"3ds"));
+          client.fcs.set(message.author.id,finalFC,"3DS");
+          console.log(message.author.id+": "+client.fcs.get(message.author.id,"3DS"));
           message.reply("your 3DS friend code has been added!");
           break;
         case 'WIIU':
           if (newFC.length > 15) return message.reply("your WiiU account name can\'t be that long.");
           finalFC = newFC;
           client.fcs.ensure(message.author.id, {});
-          client.fcs.set(message.author.id,finalFC,"wiiu");
-          console.log(message.author.id+": "+client.fcs.get(message.author.id,"wiiu"));
+          client.fcs.set(message.author.id,finalFC,"WIIU");
+          console.log(message.author.id+": "+client.fcs.get(message.author.id,"WIIU"));
           message.reply("your WiiU code has been added!");
           break;
         default:
@@ -65,20 +65,20 @@ exports.run = (client, message, args) => {
       // add new consoles as needed here
             case 'SWITCH':
               client.fcs.ensure(message.author.id, {});
-              client.fcs.set(message.author.id,false,"switch");
-              console.log(message.author.id+": "+client.fcs.get(message.author.id,"switch"));
+              client.fcs.set(message.author.id,false,"SWITCH");
+              console.log(message.author.id+": "+client.fcs.get(message.author.id,"SWITCH"));
               message.reply("your switch friend code has been removed!");
               break;
             case '3DS':
               client.fcs.ensure(message.author.id, {});
-              client.fcs.set(message.author.id,false,"3ds");
-              console.log(message.author.id+": "+client.fcs.get(message.author.id,"3ds"));
+              client.fcs.set(message.author.id,false,"3DS");
+              console.log(message.author.id+": "+client.fcs.get(message.author.id,"3DS"));
               message.reply("your 3DS friend code has been removed!");
               break;
             case 'WIIU':
               client.fcs.ensure(message.author.id, {});
-              client.fcs.set(message.author.id,false,"wiiu");
-              console.log(message.author.id+": "+client.fcs.get(message.author.id,"wiiu"));
+              client.fcs.set(message.author.id,false,"WIIU");
+              console.log(message.author.id+": "+client.fcs.get(message.author.id,"WIIU"));
               message.reply("your WiiU code has been removed!");
               break;
             default:
