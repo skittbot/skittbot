@@ -2,13 +2,13 @@ exports.run = (client, message, args) => {
 
   console.log(args.length);
   if(!args || args.size < 1) return message.reply("My friend code is x");
-  console.log(args + args[1]);
-  switch(args[1]) {
-    case args[1] === 'add':
+  console.log(args + args[0]);
+  switch(args[0]) {
+    case args[0] === 'add':
       // adding a friend code to your account. syntax should be ""
       if (args.size !== 3) return message.reply("The syntax for this command is: _!fc add **[console]** **[friend code]**");
-      let newConsole = args[2].toUpperCase();
-      let newFC = args[3].replace(/\D/g,"");
+      let newConsole = args[1].toUpperCase();
+      let newFC = args[2].replace(/\D/g,"");
       let finalFC;
       switch(newConsole) {
         case newConsole === 'SWITCH':
@@ -31,17 +31,17 @@ exports.run = (client, message, args) => {
         };
     break;
 
-    case args[1] === 'del':
+    case args[0] === 'del':
       // deleting a specific friend code
 
     break;
 
-    case args[1] === 'delall':
+    case args[0] === 'delall':
       //delete all friend code data
 
     break;
 
-    case args[1] === 'show':
+    case args[0] === 'show':
       //show a friend code of someone else
 
     break;
