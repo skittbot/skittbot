@@ -44,12 +44,12 @@ exports.run = (client, message, args) => {
           message.reply("your 3DS friend code has been added!");
           break;
         case 'WIIU':
-          if (newFC.length > 15) return message.reply("your Wii U account name can\'t be that long.");
+          if (newFC.length > 15) return message.reply("your WiiU account name can\'t be that long.");
           finalFC = newFC;
           client.fcs.ensure(message.author.id, {});
           client.fcs.set(message.author.id,finalFC,"wiiu");
           console.log(message.author.id+": "+client.fcs.get(message.author.id,"wiiu"));
-          message.reply("your Wii U code has been added!");
+          message.reply("your WiiU code has been added!");
           break;
         default:
           return message.reply("you did not input a valid friend code. The syntax for this command is: !fc add [_console_] [_friend code_]");
@@ -79,7 +79,7 @@ exports.run = (client, message, args) => {
               client.fcs.ensure(message.author.id, {});
               client.fcs.set(message.author.id,false,"wiiu");
               console.log(message.author.id+": "+client.fcs.get(message.author.id,"wiiu"));
-              message.reply("your Wii U code has been removed!");
+              message.reply("your WiiU code has been removed!");
               break;
             default:
               return message.reply("the console you specified could not be found. The syntax for this command is: !fc del [_console_]");
@@ -93,6 +93,16 @@ exports.run = (client, message, args) => {
       client.fcs.ensure(message.author.id, {});
       client.fcs.set(message.author.id,{});
       return message.reply("your friend code data has been deleted.");
+    break;
+
+    case 'forcedel':
+      //delete all friend code data
+      if(!message.member.hasPermission('MANAGE_MESSAGES')) return console.log('{$message.member} tried to reload.');
+      let forceDelTarget = message.mentions.users.first();
+      if (!forceDelTarget) return message.reply("the specified user could not be found.");
+      client.fcs.ensure(forceDelTarget.id, {});
+      client.fcs.set(forceDelTarget.id,{});
+      return message.reply("the user you specified has had their friend codes removed.");
     break;
 
     default:
