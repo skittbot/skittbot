@@ -1,22 +1,29 @@
 exports.run = (client, message, args) => {
 
-  console.log(args.length);
+  //console.log(args.length);
   if(!args || args.length < 1) {
     client.fcs.ensure(message.author.id, {});
-    let finalDefDisp = dispFCS(message.author.id);
+    let finalDefDisp = dispFCS(message.author.id,client);
     if (!finalDefDisp) return message.reply("no friend code was found.");
     return message.reply(message.member.displayName + '\'s Friend Codes:\n' + finalDefDisp);
     //return message.reply("My friend code for the switch is "+ client.fcs.get(message.author.id,"switch"));
   }
-  console.log(args + args[0]);
+  //console.log(args + args[0]);
   switch(args[0]) {
 
     case 'add':
   // adding a friend code to your account. syntax should be ""
       if (args.length !== 3) return message.reply("the syntax for this command is: !fc add [_console_] [_friend code_]");
       let newConsole = args[1].toUpperCase();
-      let newFC = args[2].replace(/\D/g,"");
-      if (args[1] === 'WIIU') newFC = args[2].replace(/\W/g,"");
+      let newFC;
+      console.log(newConsole);
+      if (newConsole === 'WIIU') {
+        newFC = args[2].replace(/\W/g,"");
+        console.log(newFC + ' wii u');
+      } else {
+        newFC = args[2].replace(/\D/g,"");
+        console.log(newFC + ' other');
+      }
       let finalFC;
       switch(newConsole) {
   // add new consoles as needed here
@@ -93,7 +100,7 @@ exports.run = (client, message, args) => {
     let anyTarget = message.mentions.users.first();
     if (!anyTarget) anyTarget = message.author;
     client.fcs.ensure(anyTarget.id, {});
-    let finalDisp = dispFCS(anyTarget.id);
+    let finalDisp = dispFCS(anyTarget.id,client);
     if (!finalDisp) return message.reply("no friend code was found.");
     return message.reply(anyTarget.username + '\'s Friend Codes:\n' + finalDisp);
     //return message.reply("the friend code for the requested user is: " +client.fcs.get(anyTarget.id,"switch"));
@@ -101,11 +108,13 @@ exports.run = (client, message, args) => {
   };
 };
 
-function dispFCS(authID){
+function dispFCS(authID,client){
   let targetObj = client.fcs.get(authID);
+  //console.log(targetObj);
   let finalString = '';
   for(var key in targetObj){
-    if(targetObj.key) finalString = finalString + key.toUpperCase() + ': ' + targetObj.key + '\n';
+    if(targetObj[key]) finalString = finalString + '**' + key.toUpperCase() + ':** ' + targetObj[key] + '\n';
+    //console.log(key + ': ' +targetObj[key] +finalString);
   }
   if (finalString === '') return false;
   return finalString;
