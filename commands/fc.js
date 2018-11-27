@@ -77,14 +77,12 @@ exports.run = (client, message, args) => {
 
     break;
 
-    case 'show':
-      //show a friend code of someone else
-
-    break;
-
     default:
     //nothing matches, return the "my friend code is x" stuff
-    return message.reply("My friend code is x and this is the end");
+    let anyTarget = message.mentions.users.first();
+    if (!anyTarget) anyTarget = message.author;
+    client.fcs.ensure(anyTarget.id, {});
+    return message.reply("the friend code for the requested user is: " +client.fcs.get(anyTarget.id,"switch"));
     break;
   };
 
