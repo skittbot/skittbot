@@ -4,21 +4,21 @@ exports.run = (client, message, args) => {
   if(!args || args.size < 1) return message.reply("My friend code is x");
   console.log(args + args[0]);
   switch(args[0]) {
-    case args[0] === 'add':
+    case 'add':
       // adding a friend code to your account. syntax should be ""
       if (args.size !== 3) return message.reply("The syntax for this command is: _!fc add **[console]** **[friend code]**");
       let newConsole = args[1].toUpperCase();
       let newFC = args[2].replace(/\D/g,"");
       let finalFC;
       switch(newConsole) {
-        case newConsole === 'SWITCH':
+        case 'SWITCH':
           if (newFC.length !== 12) return message.reply("Your friend code for the Nintendo Switch should be 12 digits.");
           finalFC = `SW-${newFC.slice(0,4)}-${newFC.slice(4,8)}-${newFC.slice(8,12)}`;
           client.fcs.ensure(message.author.id, {});
           client.fcs.set(message.author.id,finalFC,"switch");
           console.log(message.author.id+": "+client.fcs.get(message.author.id,"switch"));
           break;
-        case newConsole === '3DS':
+        case '3DS':
           if (newFC.length !== 12) return message.reply("Your friend code for the Nintendo 3DS should be 12 digits.");
           finalFC = `${newFC.slice(0,4)}-${newFC.slice(4,8)}-${newFC.slice(8,12)}`;
           client.fcs.ensure(message.author.id, {});
@@ -31,17 +31,17 @@ exports.run = (client, message, args) => {
         };
     break;
 
-    case args[0] === 'del':
+    case 'del':
       // deleting a specific friend code
 
     break;
 
-    case args[0] === 'delall':
+    case 'delall':
       //delete all friend code data
 
     break;
 
-    case args[0] === 'show':
+    case 'show':
       //show a friend code of someone else
 
     break;
