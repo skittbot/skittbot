@@ -1,5 +1,6 @@
 exports.run = (client, message, args) => {
 
+  console.log(args.length);
   if(!args || args.size < 1) return message.reply("My friend code is x");
   console.log(args);
   switch(args[1]) {
