@@ -26,7 +26,7 @@ exports.run = (client, message, args) => {
           client.fcs.ensure(message.author.id, {});
           client.fcs.set(message.author.id,finalFC,"switch");
           console.log(message.author.id+": "+client.fcs.get(message.author.id,"switch"));
-          message.reply("your switch friend code has been added!"));
+          message.reply("your switch friend code has been added!");
           break;
         case '3DS':
           if (newFC.length !== 12) return message.reply("your friend code for the Nintendo 3DS should be 12 digits.");
@@ -34,7 +34,7 @@ exports.run = (client, message, args) => {
           client.fcs.ensure(message.author.id, {});
           client.fcs.set(message.author.id,finalFC,"3ds");
           console.log(message.author.id+": "+client.fcs.get(message.author.id,"3ds"));
-          message.reply("your 3DS friend code has been added!"));
+          message.reply("your 3DS friend code has been added!");
           break;
         case 'WIIU':
           if (newFC.length > 15) return message.reply("your Wii U account name can\'t be that long.");
@@ -42,7 +42,7 @@ exports.run = (client, message, args) => {
           client.fcs.ensure(message.author.id, {});
           client.fcs.set(message.author.id,finalFC,"wiiu");
           console.log(message.author.id+": "+client.fcs.get(message.author.id,"wiiu"));
-          message.reply("your Wii U code has been added!"));
+          message.reply("your Wii U code has been added!");
           break;
         default:
           return message.reply("you did not input a valid friend code. The syntax for this command is: !fc add [_console_] [_friend code_]");
@@ -60,19 +60,19 @@ exports.run = (client, message, args) => {
               client.fcs.ensure(message.author.id, {});
               client.fcs.set(message.author.id,false,"switch");
               console.log(message.author.id+": "+client.fcs.get(message.author.id,"switch"));
-              message.reply("your switch friend code has been removed!"));
+              message.reply("your switch friend code has been removed!");
               break;
             case '3DS':
               client.fcs.ensure(message.author.id, {});
               client.fcs.set(message.author.id,false,"3ds");
               console.log(message.author.id+": "+client.fcs.get(message.author.id,"3ds"));
-              message.reply("your 3DS friend code has been removed!"));
+              message.reply("your 3DS friend code has been removed!");
               break;
             case 'WIIU':
               client.fcs.ensure(message.author.id, {});
               client.fcs.set(message.author.id,false,"wiiu");
               console.log(message.author.id+": "+client.fcs.get(message.author.id,"wiiu"));
-              message.reply("your Wii U code has been removed!"));
+              message.reply("your Wii U code has been removed!");
               break;
             default:
               return message.reply("the console you specified could not be found. The syntax for this command is: !fc del [_console_]");

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/skittbot/skittbot#readme",
   "dependencies": {
+    "better-sqlite-pool": "^0.1.2",
     "discord.js": "^11.4.2",
     "enmap": "^4.3.3"
   }
