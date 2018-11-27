@@ -4,7 +4,7 @@ module.exports = (client, message) => {
   // Ignore all bots, and any user without an id.  verified users only.
   if (message.author.bot) return;
   if (!message.author.id) return;
-
+  if (message.guild) {
   // Ignore messages not starting with the prefix (in config.json)
   if (message.content.indexOf(client.config.prefix) !== 0) return;
 
@@ -22,6 +22,7 @@ module.exports = (client, message) => {
 
   // Run the command
   cmd.run(client, message, args);
+  }
 };
 
 //ugh ok looks like i need to learn about asynchronous functions.

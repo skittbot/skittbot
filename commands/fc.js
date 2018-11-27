@@ -95,6 +95,14 @@ exports.run = (client, message, args) => {
       return message.reply("your friend code data has been deleted.");
     break;
 
+    case 'allclear':
+      //nuke the whole thing!!!
+      if (message.author.id !== client.config.ownerID) return;
+      client.fcs.deleteAll();
+      console.log('all data cleared!');
+      return message.reply("you cleared every single friend code from the list!")
+    break;
+
     case 'forcedel':
       //delete all friend code data
       if(!message.member.hasPermission('MANAGE_MESSAGES')) return console.log('{$message.member} tried to reload.');
@@ -103,6 +111,14 @@ exports.run = (client, message, args) => {
       client.fcs.ensure(forceDelTarget.id, {});
       client.fcs.set(forceDelTarget.id,{});
       return message.reply("the user you specified has had their friend codes removed.");
+    break;
+
+    case 'help':
+      return message.reply("Friend Code Command List:\n"+
+        "**!fc**: Display your own friend codes. You can @ someone to display their friend code as well.\n"+
+        "**!fc add [console] [friend code]**: Add a friend code to your profile.  Must be for Switch, 3DS, or WiiU.\n"+
+        "**!fc del [console]**: Remove your friend code from your profile.\n"+
+        "**!fc delall**: Remove all friend codes from your profile.");
     break;
 
     default:
