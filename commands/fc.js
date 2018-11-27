@@ -9,17 +9,18 @@ exports.run = (client, message, args) => {
       if (args.size !== 3) return message.reply("The syntax for this command is: _!fc add **[console]** **[friend code]**");
       let newConsole = args[2].toUpperCase();
       let newFC = args[3].replace(/\D/g,"");
+      let finalFC;
       switch(newConsole) {
         case newConsole === 'SWITCH':
           if (newFC.length !== 12) return message.reply("Your friend code for the Nintendo Switch should be 12 digits.");
-          let finalFC = `SW-${newFC.slice(0,4)}-${newFC.slice(4,8)}-${newFC.slice(8,12)}`;
+          finalFC = `SW-${newFC.slice(0,4)}-${newFC.slice(4,8)}-${newFC.slice(8,12)}`;
           client.fcs.ensure(message.author.id, {});
           client.fcs.set(message.author.id,finalFC,"switch");
           console.log(message.author.id+": "+client.fcs.get(message.author.id,"switch"));
           break;
         case newConsole === '3DS':
           if (newFC.length !== 12) return message.reply("Your friend code for the 3DS should be 12 digits.");
-          let finalFC = `${newFC.slice(0,4)}-${newFC.slice(4,8)}-${newFC.slice(8,12)}`;
+          finalFC = `${newFC.slice(0,4)}-${newFC.slice(4,8)}-${newFC.slice(8,12)}`;
           client.fcs.ensure(message.author.id, {
               3DS: finalFC
           });
