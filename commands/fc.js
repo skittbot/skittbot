@@ -50,17 +50,17 @@ exports.run = (client, message, args) => {
             case 'SWITCH':
               client.fcs.ensure(message.author.id, {});
               client.fcs.set(message.author.id,false,"switch");
-              console.log(message.author.id+": "+client.fcs.get(message.author.id,"removed switch"));
+              console.log(message.author.id+": "+client.fcs.get(message.author.id,"switch"));
               break;
             case '3DS':
               client.fcs.ensure(message.author.id, {});
               client.fcs.set(message.author.id,false,"3ds");
-              console.log(message.author.id+": "+client.fcs.get(message.author.id,"removed 3ds"));
+              console.log(message.author.id+": "+client.fcs.get(message.author.id,"3ds"));
               break;
             case 'WIIU':
               client.fcs.ensure(message.author.id, {});
               client.fcs.set(message.author.id,false,"wiiu");
-              console.log(message.author.id+": "+client.fcs.get(message.author.id,"removed wiiu"));
+              console.log(message.author.id+": "+client.fcs.get(message.author.id,"wiiu"));
               break;
             default:
               return message.reply("the console you specified could not be found. The syntax for this command is: !fc del [_console_]");
