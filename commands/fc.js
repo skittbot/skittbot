@@ -24,7 +24,11 @@ exports.run = (client, message, args) => {
               3DS: finalFC
           });
           break;
-        case
+        default:
+          return message.reply("You did not input a valid friend code. The syntax for this command is: _!fc add **[console]** **[friend code]**");
+          break;
+
+
         break;
       }
 
@@ -47,7 +51,7 @@ exports.run = (client, message, args) => {
 
     default:
     //nothing matches, return the "my friend code is x" stuff
-
+    break;
   }
 
 
