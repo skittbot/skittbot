@@ -1,6 +1,6 @@
 module.exports = (client, message) => {
 
-
+  //mipi!
   // Ignore all bots, and any user without an id.  verified users only.
   if (message.author.bot) return;
   if (!message.author.id) return;
