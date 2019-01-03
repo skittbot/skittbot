@@ -1,8 +1,8 @@
 module.exports = (client, message) => {
 
-  var currMessTime;
-  var lastMess;
-  var formerMess;
+  //var currMessTime;
+  //var lastMess;
+  //var formerMess;
   // Ignore all bots
   if (message.author.bot) return;
 
@@ -10,7 +10,7 @@ module.exports = (client, message) => {
   if (message.content.indexOf(client.config.prefix) !== 0) return;
 
 
-  lastMess = client.user.lastMessage;
+  //lastMess = client.user.lastMessage;
 
 
   /* try {
