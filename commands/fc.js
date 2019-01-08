@@ -44,7 +44,7 @@ exports.run = (client, message, args) => {
           message.reply("your 3DS friend code has been added!");
           break;
         case 'WIIU':
-          if (newFC.length > 15) return message.reply("your WiiU account name can\'t be that long.");
+          if (newFC.length > 20) return message.reply("your WiiU account name can\'t be that long.");
           finalFC = newFC;
           client.fcs.ensure(message.author.id, {});
           client.fcs.set(message.author.id,finalFC,"wiiu");
