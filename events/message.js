@@ -8,7 +8,7 @@ module.exports = (client, message) => {
   if (message.guild && !(message.author == null)) {
   // Ignore messages not starting with the prefix (in config.json)
   if (message.content.indexOf(client.config.prefix) !== 0) return;
-
+  message.guild.fetchMember(message.author);
   // Our standard argument/command name definition.
   const args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
